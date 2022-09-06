@@ -18,7 +18,7 @@
     "href": "index.html",
     "title": "Kristine Hahm",
     "section": "",
-    "text": "This Kristine Hahm’s Website. Projects will be hosted here."
+    "text": "This is Kristine Hahm’s Website. Projects will be hosted here.\n\npar(family = \"sans\")\nplot(iris, pch=20, cex=.75, col=\"steelblue\")"
   },
   {
     "objectID": "about.html",
