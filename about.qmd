@@ -1,9 +1,0 @@
----
-title: "About"
----
-
-I am a doctoral student studying public policy in University of Texas at Dallas.
-
-```{r}
-
-```
