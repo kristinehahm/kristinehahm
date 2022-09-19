@@ -1,0 +1,10 @@
+---
+title: "Assignment 2"
+
+format:
+  html:
+    code-fold: true
+    code-tools: true
+---
+
+## 1. Paul Murrell's R Graphics 

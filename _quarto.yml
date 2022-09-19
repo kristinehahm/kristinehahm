@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: "Kristine Hahm"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - text: Assignments
+        menu: 
+          - assign01.qmd
+          - assign02.qmd
+        
+format:
+  html:
+    theme: journal
+    css: styles.css
+    toc: true
+
+editor: visual
