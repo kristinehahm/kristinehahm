@@ -21,18 +21,18 @@
     "text": "3. Critique on a chart\nThis charts shows the platforms as percentage of total origin of memes over time. “Know Your Meme” used data from 2011 to 2022. It seems that Twitter has been the most rapidly growing platform for memes.\nHowever, due to similar colors they used for different platforms, it was hard to distinguish one platform to another. Also, they could have deleted .00% on the left and shorten it. By doing so, the chart could have been more efficient.\nIt was interesting to see TikTok’s percentage grow rapidly from 2019 when Covid-19 started.\n\nSource: https://flowingdata.com/wp-content/uploads/2022/08/where-the-memes-came-from-1536x846.png"
   },
   {
+    "objectID": "assign04.html",
+    "href": "assign04.html",
+    "title": "Assignment 4",
+    "section": "",
+    "text": "Code\nmy_data <- read.csv(\"~/Desktop/D.V. Rstudio/kristinehahm/Sampling Example.csv\")\n\nN <- my_data\nVoting <- my_data$Likeliness.you.will.vote\nGenre <- my_data$Music.Taste\nAge <- my_data$Age\nParty <- my_data$Political.Party...Liberal..0..Conservative..1.\n\np1<- ggplot(N,\n       aes(x=`Voting`,\n           ))+\n  geom_bar(position='dodge', fill = \"lavender\", colour = \"lightgrey\") +\n  scale_colour_brewer(palette = \"PiYG\") +\n  theme_bw() +\n  labs(x = \"On a Scale of 1-to-5 How Likely Are You to Vote?\",\n       y = \"count\",\n       title = \"Likeliness of Voting\",\n       caption = Sys.Date())\np1\n\n\n\n\n\nCode\n#2\n\np2<- ggplot(N,\n            aes(x=`Genre`,\n            ))+\n  geom_bar(position='dodge', fill = \"mistyrose\") +\n  scale_colour_brewer(palette = \"PiYG\") +\n  theme_bw() +\n  labs(x = \"Preferred Genre?\",\n       y = \"count\",\n       title = \"Genre\",\n       caption = Sys.Date())\n\np3<- ggplot(N,\n            aes(x=`Age`,\n            ))+\n  geom_bar(position='dodge', fill = \"slategray1\") +\n  scale_colour_brewer(palette = \"PiYG\") +\n  theme_bw() +\n  labs(x = \"How old are you?\",\n       y = \"count\",\n       title = \"Age\",\n       caption = Sys.Date())\n\n\n\nggdraw() +\n  draw_plot(p2, x = 0, y = .5, width = .5, height = .5) +\n  draw_plot(p3, x = .5, y = .5, width = .5, height = .5) +\n  draw_plot(p1, x = 0, y = 0, width = 1, height = 0.5) +\n  draw_plot_label(label = c(\"A\", \"B\", \"C\"), size = 8,\n                  x = c(0, 0.5, 0), y = c(1, 1, 0.5))"
+  },
+  {
     "objectID": "assign03.html",
     "href": "assign03.html",
     "title": "Assignment 3",
     "section": "",
     "text": "Code\n## Anscombe (1973) Quartlet\n\ndata(anscombe)  # Load Anscombe's data\n\n\n\n## Simple version\nplot(anscombe$x1,anscombe$y1)\n\n# Create four model objects\nlm1 <- lm(y1 ~ x1, data=anscombe)\n#summary(lm1)\nlm2 <- lm(y2 ~ x2, data=anscombe)\n#summary(lm2)\nlm3 <- lm(y3 ~ x3, data=anscombe)\n#summary(lm3)\nlm4 <- lm(y4 ~ x4, data=anscombe)\n#summary(lm4)\nplot(anscombe$x1,anscombe$y1)\nabline(coefficients(lm1))\n\n\n\n\n\nCode\nplot(anscombe$x2,anscombe$y2)\nabline(coefficients(lm2))\n\n\n\n\n\nCode\nplot(anscombe$x3,anscombe$y3)\nabline(coefficients(lm3))\n\n\n\n\n\nCode\nplot(anscombe$x4,anscombe$y4)\nabline(coefficients(lm4))\n\n\n\n\n\nCode\n## Fancy version (per help file)\n\nff <- y ~ x\nmods <- setNames(as.list(1:4), paste0(\"lm\", 1:4))\n\n# Plot using for loop\nfor(i in 1:4) {\n ff[2:3] <- lapply(paste0(c(\"y\",\"x\"), i), as.name)\n  ## or   ff[[2]] <- as.name(paste0(\"y\", i))\n  ##      ff[[3]] <- as.name(paste0(\"x\", i))\n  mods[[i]] <- lmi <- lm(ff, data = anscombe)\n  #print(anova(lmi))\n}\n\n#sapply(mods, coef)  # Note the use of this function\n#lapply(mods, function(fm) coef(summary(fm)))\n\n# Preparing for the plots\nop <- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma =  c(0, 0, 2, 0))\n\n# Plot charts using for loop\nfor(i in 1:4) {\n  ff[2:3] <- lapply(paste0(c(\"y\",\"x\"), i), as.name)\n  plot(ff, data = anscombe, col = \"red\", pch = 21, bg = \"orange\", cex = 1.2,\n       xlim = c(3, 19), ylim = c(3, 13))\n  abline(mods[[i]], col = \"blue\")\n}\nmtext(\"Anscombe's 4 Regression data sets\", outer = TRUE, cex = 1.5)\n\n\n\n\n\nCode\npar(op)"
-  },
-  {
-    "objectID": "assign03.html#prepare-for-class-5---big-data-analytics-pitfall-overfitting-and-overparameterization",
-    "href": "assign03.html#prepare-for-class-5---big-data-analytics-pitfall-overfitting-and-overparameterization",
-    "title": "Assignment 3",
-    "section": "2. Prepare for Class 5 - Big data analytics pitfall & Overfitting and overparameterization",
-    "text": "2. Prepare for Class 5 - Big data analytics pitfall & Overfitting and overparameterization"
   },
   {
     "objectID": "assign02.html#paul-marrells-r-graphics-hpi",
